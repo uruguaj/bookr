@@ -2,7 +2,7 @@
 # Book Api
 
 **Instalation**:
-Install django (//todo add this ro requirments.txt) `npm i django==5`
+Install django (//todo add this ro requirments.txt) `pip install Django==5.0`
 <br/>
 
 Run dev server:
