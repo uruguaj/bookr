@@ -1,12 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 
-# Create your views here.
 def index(request):
-    return HttpResponse("Hello uruguaj <3 <h1>god</h1>")
+    return render(request, "base.html")
 
 
-def main(request):
-    search = request.GET.get("search")
-    return render(request, "base.html", {"search": search})
+def book_search(request):
+    search_text = request.GET.get("search", "")
+    return render(request, "search-result.html", {"search_text": search_text})

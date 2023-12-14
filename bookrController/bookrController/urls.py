@@ -19,7 +19,7 @@ from django.urls import path
 import reviews.views
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('', reviews.views.index),
-    path('book', reviews.views.main),
-    path('admin/', admin.site.urls)
+    path('book-search/', reviews.views.book_search)
 ]
