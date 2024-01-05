@@ -4,19 +4,22 @@
 		rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 />
+
 <div class="animate__animated animate__bounceInUp">
 <h1>All books</h1>
 
 	<div x-data="{ open: false }">
 		<button @click="open = ! open">Toggle</button>
-
-		<div x-show="open" @click.outside="open = false">
+		<div class="animate__animated animate__bounceInUp" x-show="open" @click.outside="open = false">
 			{% for book in object_list %}
 			<ul>
 				<li>Title: {{ book.title }}</li>
 				<li>Subtitle: {{ book.subtitle }}</li>
 				<li>Author: {{ book.author }}</li>
 				<li>ISBN: {{ book.isbn }}</li>
+				{% if book.image %}
+				<li>Image: <img src="./{{ book.image.url }}" alt="{{ book.title }} Image"></li>
+				{% endif %}
 			</ul>
 			{% endfor %}
 		</div>
