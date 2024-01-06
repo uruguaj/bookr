@@ -1,13 +1,17 @@
 from django.db import models
 
-class Book(models.Model):
+class Publication(models.Model):
     title = models.CharField(max_length=250)
     subtitle = models.CharField(max_length=250)
     author = models.CharField(max_length=100)
     isbn = models.CharField(max_length=13)
-    image = models.ImageField(upload_to="image", default='templates/books/IMG_2181.jpg')
 
+    class Meta:
+        abstract = True
 
-
-    def __str__(self) -> str:
+    def __str__(self):
         return self.title
+
+class Book(Publication):
+    def __str__(self):
+        return f"Book: {self.title}"
