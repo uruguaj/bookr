@@ -1,311 +1,361 @@
-<!-- books/templates/books/book_list.html -->
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
+	<!-- books/templates/books/book_list.html -->
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+	<script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
 
 
 
-<style>
-	@font-face {
-		font-family: "ChillaxRegular";
-		src: url("https://uruguaj.com/fonts/6321d19aa9338ec55954da93_Chillax-Regular.woff") format("woff");
-	}
-
-	@font-face {
-		font-family: "ChillaxBold";
-		src: url("https://uruguaj.com/fonts/6321d19146fcb8632ecf3989_Chillax-Medium.woff") format("woff");
-	}
-
-
-	*,
-	html,
-	body {
-		box-sizing: border-box;
-		margin: 0;
-		padding: 0;
-		-webkit-font-smoothing: antialiased;
-	}
-
-	html {
-		background-color: #1a1a1a;
-	}
-
-	.title {
-		font-family: 'Roboto', sans-serif;
-		font-weight: ;
-		color: #fff;
-		text-align: center;
-		padding: 3rem;
-		font-size: 2.5rem;
-	}
-
-	.section-home-hero {
-		min-height: 100vh;
-		background-position: 50%;
-		background-color: #1a1a1a;
-		justify-content: center;
-		align-items: center;
-		position: relative;
-	}
-
-	.card__wrapper {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-		gap: 1rem;
-		padding: 0 3rem;
-	}
-
-	@media (max-width: 768px) {
-		.card__wrapper {
-			grid-template-columns: repeat(auto-fill, minmax(4 0%, 1fr));
+	<style>
+		@font-face {
+			font-family: "ChillaxRegular";
+			src: url("https://uruguaj.com/fonts/6321d19aa9338ec55954da93_Chillax-Regular.woff") format("woff");
 		}
-	}
 
-	.card {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		width: clamp(15rem, 20%, 25rem);
-		padding: 1rem;
-		color: #fafafa !important;
-		background-color: #28282B;
-		margin: 1rem;
-		border-top-left-radius: 1rem;
-		border-bottom-right-radius: 3rem;
-	}
-
-	.card:nth-child(even) {
-		background-color: #fafafa;
-		color: #1a1a1a !important;
-	}
-
-	ul {
-		font-family: ChillaxRegular, sans-serif;
-		list-style-type: none !important;
-		flex-grow: 1;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-	}
+		@font-face {
+			font-family: "ChillaxBold";
+			src: url("https://uruguaj.com/fonts/6321d19146fcb8632ecf3989_Chillax-Medium.woff") format("woff");
+		}
 
 
-	.button-86 {
-		all: unset;
-		width: 100px;
-		height: 30px;
-		font-size: 16px;
-		background: transparent;
-		border: none;
-		position: relative;
-		color: #f0f0f0;
-		cursor: pointer;
-		z-index: 1;
-		padding: 10px 20px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		white-space: nowrap;
-		user-select: none;
-		-webkit-user-select: none;
-		touch-action: manipulation;
-	}
+		*,
+		html,
+		body {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+			-webkit-font-smoothing: antialiased;
+		}
 
-	.button-86::after,
-	.button-86::before {
-		content: '';
-		position: absolute;
-		bottom: 0;
-		right: 0;
-		z-index: -99999;
-		transition: all .4s;
-	}
+		html {
+			background-color: #1a1a1a;
+		}
 
-	.button-86::before {
-		transform: translate(0%, 0%);
-		width: 100%;
-		height: 100%;
-		background: #28282d;
-		border-radius: 10px;
-	}
+		.title {
+			font-family: 'Roboto', sans-serif;
+			font-weight: ;
+			color: #fff;
+			text-align: center;
+			padding: 3rem;
+			font-size: 2.5rem;
+		}
 
-	.button-86::after {
-		transform: translate(10px, 10px);
-		width: 35px;
-		height: 35px;
-		background: #ffffff15;
-		backdrop-filter: blur(5px);
-		-webkit-backdrop-filter: blur(5px);
-		border-radius: 50px;
-	}
+		.section-home-hero {
+			min-height: 100vh;
+			background-position: 50%;
+			background-color: #1a1a1a;
+			justify-content: center;
+			align-items: center;
+			position: relative;
+		}
 
-	.button-86:hover::before {
-		transform: translate(5%, 20%);
-		width: 110%;
-		height: 110%;
-	}
+		.card__wrapper {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+			gap: 1rem;
+			padding: 0 3rem;
+		}
 
-	.button-86:hover::after {
-		border-radius: 10px;
-		transform: translate(0, 0);
-		width: 100%;
-		height: 100%;
-	}
+		@media (max-width: 768px) {
+			.card__wrapper {
+				grid-template-columns: repeat(auto-fill, minmax(4 0%, 1fr));
+			}
+		}
 
-	.button-86:active::after {
-		transition: 0s;
-		transform: translate(0, 5%);
-	}
+		.card {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: clamp(15rem, 20%, 25rem);
+			padding: 1rem;
+			color: #fafafa !important;
+			background-color: #28282B;
+			margin: 1rem;
+			border-top-left-radius: 1rem;
+			border-bottom-right-radius: 3rem;
+		}
 
-	a {
-		text-decoration: none;
-		font-family: ChillaxRegular, sans-serif;
-		font-weight: 400;
-	}
+		.card:nth-child(even) {
+			background-color: #fafafa;
+			color: #1a1a1a !important;
+		}
 
-	.button__wrapper {
-		position: fixed;
-		bottom: 3rem;
-		left: 50%;
-		transform: translateX(-50%);
-	}
+		ul {
+			font-family: ChillaxRegular, sans-serif;
+			list-style-type: none !important;
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
 
-	.box__wrapper {
-		position: fixed;
-		bottom: 6rem;
-		transform: translateX(-50%);
-		left: 50%;
-	}
 
-	.box {
-		background: #fff;
-		padding: 1rem;
-		border-radius: .4rem;
-		display: flex;
-		flex-direction: column;
-		font-family: ChillaxBold, sans-serif;
-		width: fit-content;
-		margin: 3rem auto;
-	}
+		.button-86 {
+			all: unset;
+			width: 100px;
+			height: 30px;
+			font-size: 16px;
+			background: transparent;
+			border: none;
+			position: relative;
+			color: #f0f0f0;
+			cursor: pointer;
+			z-index: 1;
+			padding: 10px 20px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			white-space: nowrap;
+			user-select: none;
+			-webkit-user-select: none;
+			touch-action: manipulation;
+		}
 
-	img {
-		margin-bottom: 1rem;
-		width: 100%;
-		object-fit: cover;
-		padding: 0.2rem;
-		border-bottom-right-radius: 3rem;
-		margin-top: 1rem;
-	}
+		.button-86::after,
+		.button-86::before {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			z-index: -99999;
+			transition: all .4s;
+		}
 
-	span {
-		font-size: 0.6rem;
-	}
+		.button-86::before {
+			transform: translate(0%, 0%);
+			width: 100%;
+			height: 100%;
+			background: #28282d;
+			border-radius: 10px;
+		}
 
-	b {
-		font-family: 'Roboto', sans-serif !important;
-	}
-</style>
-<main class="main-wrapper">
-	<section class="section-home-hero">
-		<div>
-			<h1 id="title" class="title animate__animated animate__tada"> Booq.</h1>
-			<div class="card__wrapper">
-				{% for book in object_list %}
-				<div class="card">
-					<ul>
-						<li><b>Title:</b> {{ book.title }}</li>
-						<li><b>Subtitle:</b> {{ book.subtitle }}</li>
-						<li><b>Author:</b> {{ book.author }}</li>
-						<li><b>Publisher:</b> Zlate Leta Fr</li>
-						<li><b>ISBN:</b> {{ book.isbn }}</li>
-						<img src="{{book.imagePath}}" alt="book cover {{book.title}}">
-						<span>Click me :) (do not forget to turn the sound on :))</span>
-					</ul>
+		.button-86::after {
+			transform: translate(10px, 10px);
+			width: 35px;
+			height: 35px;
+			background: #ffffff15;
+			backdrop-filter: blur(5px);
+			-webkit-backdrop-filter: blur(5px);
+			border-radius: 50px;
+		}
+
+		.button-86:hover::before {
+			transform: translate(5%, 20%);
+			width: 110%;
+			height: 110%;
+		}
+
+		.button-86:hover::after {
+			border-radius: 10px;
+			transform: translate(0, 0);
+			width: 100%;
+			height: 100%;
+		}
+
+		.button-86:active::after {
+			transition: 0s;
+			transform: translate(0, 5%);
+		}
+
+		a {
+			text-decoration: none;
+			font-family: ChillaxRegular, sans-serif;
+			font-weight: 400;
+		}
+
+		.button__wrapper {
+			position: fixed;
+			bottom: 3rem;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		.box__wrapper {
+			position: fixed;
+			bottom: 6rem;
+			transform: translateX(-50%);
+			left: 50%;
+		}
+
+		.box {
+			background: #fff;
+			padding: 1rem;
+			border-radius: .4rem;
+			display: flex;
+			flex-direction: column;
+			font-family: ChillaxBold, sans-serif;
+			width: fit-content;
+			margin: 3rem auto;
+		}
+
+		img {
+			margin-bottom: 1rem;
+			width: 100%;
+			object-fit: cover;
+			padding: 0.2rem;
+			border-bottom-right-radius: 3rem;
+			margin-top: 1rem;
+		}
+
+		span {
+			font-size: 0.6rem;
+		}
+
+		b {
+			font-family: 'Bungee Spice', sans-serif;
+		}
+		.adban{
+			padding: 1rem;
+			max-height: 12rem;
+			object-fit: cover;
+			border-radius: inherit;
+		}
+		.ads{
+			padding: 1rem;
+		}
+		.dva:hover{
+			max-height: 100%;
+		}
+
+		.card img.fullscreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 9999;
+        object-fit: contain;
+        cursor: zoom-out;
+    }
+
+    .card img.fullscreen:hover {
+        cursor: zoom-out;
+    }
+	</style>
+
+	<main class="main-wrapper watermarked" data-watermark="howbloggerz">
+		<section class="section-home-hero">
+			<div>
+				<h1 id="title" class="title animate__animated animate__tada"> Booq.</h1>
+				<div class="ads animate__animated animate__flip">
+					<img class="adban" src="https://uruguaj.com/bannerr.jpg" alt="Ad">
+					</div>
+							<div class="card__wrapper">
+					{% for book in object_list %}
+					<div class="card">
+						<ul>
+							<li><b>Title:</b> {{ book.title }}</li>
+							<li><b>Subtitle:</b> {{ book.subtitle }}</li>
+							<li><b>Author:</b> {{ book.author }}</li>
+							<li><b>Publisher:</b> Zlate Leta Fr</li>
+							<li><b>ISBN:</b> {{ book.isbn }}</li>
+							<img src="{{book.imagePath}}" alt="book cover {{book.title}}">
+							<span>Click me :) (do not forget to turn the sound on :))</span>
+						</ul>
+					</div>
+					{% endfor %}
 				</div>
-				{% endfor %}
-			</div>
-			<div x-data="{ open: false, redierect: false }">
-				<div class="button__wrapper">
-					<a>
-						<button onclick="redierect()" x-on:click="open = ! open" class="button-86"
-							role="button">&nbsp;<b>+</b>&nbsp;Add New
-							Book?</button>
-					</a>
-				</div>
-				<div x-show="open">
-					<div class="box__wrapper">
-						<div class="box animate__animated animate__fadeInUp">
-							You will be redierected to "http://localhost:8000/admin" in 5 seconds
-							<br />
-							Username : "uruguaj"
-							<br />
-							Password : "heslo"
+				<div x-data="{ open: false, redierect: false }">
+					<div class="button__wrapper">
+						<a>
+							<button onclick="redierect()" x-on:click="open = ! open" class="button-86"
+								role="button">&nbsp;<b>+</b>&nbsp;Add New
+								Book?</button>
+						</a>
+					</div>
+					<div x-show="open">
+						<div class="box__wrapper">
+							<div class="box animate__animated animate__fadeInUp">
+								You will be redierected to "http://localhost:8000/admin" in 5 seconds
+								<br />
+								Username : "uruguaj"
+								<br />
+								Password : "heslo"
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-	</section>
-</main>
-</div>
+		</section>
+	</main>
+	</div>
+	<div class="ads ">
+	<img class="adban dva" src="https://uruguaj.com/adban.gif" alt="Ad">
+	</div>
+	
 
-<script defer>
-	function _0x8842(_0x4542dc, _0x54e7e0) { const _0x248e6f = _0x248e(); return _0x8842 = function (_0x3549d5, _0xdea284) { _0x3549d5 = _0x3549d5 - 0xba; let _0x178d4b = _0x248e6f[_0x3549d5]; return _0x178d4b; }, _0x8842(_0x4542dc, _0x54e7e0); } const _0x425599 = _0x8842; (function (_0x911d97, _0x35b293) { const _0x11d05f = _0x8842, _0x7dbeb6 = _0x911d97(); while (!![]) { try { const _0x512089 = -parseInt(_0x11d05f(0xc4)) / 0x1 * (parseInt(_0x11d05f(0xbf)) / 0x2) + -parseInt(_0x11d05f(0xc7)) / 0x3 * (parseInt(_0x11d05f(0xbb)) / 0x4) + parseInt(_0x11d05f(0xcb)) / 0x5 * (-parseInt(_0x11d05f(0xbe)) / 0x6) + -parseInt(_0x11d05f(0xc2)) / 0x7 * (-parseInt(_0x11d05f(0xca)) / 0x8) + parseInt(_0x11d05f(0xc8)) / 0x9 + -parseInt(_0x11d05f(0xbd)) / 0xa + -parseInt(_0x11d05f(0xc5)) / 0xb * (-parseInt(_0x11d05f(0xba)) / 0xc); if (_0x512089 === _0x35b293) break; else _0x7dbeb6['push'](_0x7dbeb6['shift']()); } catch (_0x338d98) { _0x7dbeb6['push'](_0x7dbeb6['shift']()); } } }(_0x248e, 0x24fbc)); function playSound() { const _0x1c584c = _0x8842, _0x2a7075 = new Audio(_0x1c584c(0xc0)); _0x2a7075[_0x1c584c(0xc3)](); } function _0x248e() { const _0x1fcab1 = ['7YiUYdc', 'play', '5877cDFYRB', '33jNRlOz', '.card', '15258kVdIoL', '217449EVIQWB', 'forEach', '1479216RqfBxD', '5wKCzlP', '864876uLkGsd', '12NmbWMt', 'click', '1676110peRsEz', '334002kpJIdq', '12cfcAqH', 'https://uruguaj.com/easter.mp3', 'querySelectorAll']; _0x248e = function () { return _0x1fcab1; }; return _0x248e(); } const cards = document[_0x425599(0xc1)](_0x425599(0xc6)); cards[_0x425599(0xc9)](function (_0x3ad4d0) { const _0x215484 = _0x425599; _0x3ad4d0['addEventListener'](_0x215484(0xbc), function () { playSound(); }); });
-</script>
-<script defer>
-	const images = document.querySelectorAll('.card img');
-	images.forEach(function (image) {
-		image.addEventListener('click', function () {
-			const rotationAngle = Math.floor(Math.random() * 360) + 1;
-			image.style.transform = `rotate(${rotationAngle}deg)`;
-		});
-	});
-</script>
-<script>
-	function redierect() {
-		setTimeout(
-			() => {
-				window.location.href = 'http://localhost:8000/admin'
-			}
-			, 5900)
-	}
-</script>
-<script defer>
-	document.addEventListener("DOMContentLoaded", function () {
-		const titleElement = document.querySelector('.title');
-		const cardElements = document.querySelectorAll('.card');
-		const tl = gsap.timeline({ defaults: { ease: "power1.out" } });
-		tl.fromTo(titleElement, { opacity: 0, y: "-100%" }, { opacity: 1, y: "0%", duration: 1 });
-		tl.from(cardElements, { opacity: 0, y: "50px", stagger: 0.1, duration: 1.5 });
-
-		cardElements.forEach((card) => {
-			card.addEventListener('mouseenter', function () {
-				gsap.to(card, { scale: 1.10, duration: 0.3 });
-			});
-
-			card.addEventListener('mouseleave', function () {
-				gsap.to(card, { scale: 1, duration: 0.3 });
-			});
-		});
-
-		const addButton = document.querySelector('.button-86');
-		gsap.from(addButton, { opacity: 0, duration: 1, delay: 1.5 });
+	<script defer>
+		function _0x8842(_0x4542dc, _0x54e7e0) { const _0x248e6f = _0x248e(); return _0x8842 = function (_0x3549d5, _0xdea284) { _0x3549d5 = _0x3549d5 - 0xba; let _0x178d4b = _0x248e6f[_0x3549d5]; return _0x178d4b; }, _0x8842(_0x4542dc, _0x54e7e0); } const _0x425599 = _0x8842; (function (_0x911d97, _0x35b293) { const _0x11d05f = _0x8842, _0x7dbeb6 = _0x911d97(); while (!![]) { try { const _0x512089 = -parseInt(_0x11d05f(0xc4)) / 0x1 * (parseInt(_0x11d05f(0xbf)) / 0x2) + -parseInt(_0x11d05f(0xc7)) / 0x3 * (parseInt(_0x11d05f(0xbb)) / 0x4) + parseInt(_0x11d05f(0xcb)) / 0x5 * (-parseInt(_0x11d05f(0xbe)) / 0x6) + -parseInt(_0x11d05f(0xc2)) / 0x7 * (-parseInt(_0x11d05f(0xca)) / 0x8) + parseInt(_0x11d05f(0xc8)) / 0x9 + -parseInt(_0x11d05f(0xbd)) / 0xa + -parseInt(_0x11d05f(0xc5)) / 0xb * (-parseInt(_0x11d05f(0xba)) / 0xc); if (_0x512089 === _0x35b293) break; else _0x7dbeb6['push'](_0x7dbeb6['shift']()); } catch (_0x338d98) { _0x7dbeb6['push'](_0x7dbeb6['shift']()); } } }(_0x248e, 0x24fbc)); function playSound() { const _0x1c584c = _0x8842, _0x2a7075 = new Audio(_0x1c584c(0xc0)); _0x2a7075[_0x1c584c(0xc3)](); } function _0x248e() { const _0x1fcab1 = ['7YiUYdc', 'play', '5877cDFYRB', '33jNRlOz', '.card', '15258kVdIoL', '217449EVIQWB', 'forEach', '1479216RqfBxD', '5wKCzlP', '864876uLkGsd', '12NmbWMt', 'click', '1676110peRsEz', '334002kpJIdq', '12cfcAqH', 'https://uruguaj.com/easter.mp3', 'querySelectorAll']; _0x248e = function () { return _0x1fcab1; }; return _0x248e(); } const cards = document[_0x425599(0xc1)](_0x425599(0xc6)); cards[_0x425599(0xc9)](function (_0x3ad4d0) { const _0x215484 = _0x425599; _0x3ad4d0['addEventListener'](_0x215484(0xbc), function () { playSound(); }); });
+	</script>
+	<script defer>
 		const images = document.querySelectorAll('.card img');
 		images.forEach(function (image) {
-			image.addEventListener('mouseenter', function () {
-				gsap.to(image, { scale: 1.1, opacity: 0.8, duration: 0.5 });
-			});
-
-			image.addEventListener('mouseleave', function () {
-				gsap.to(image, { scale: 1, opacity: 1, duration: 0.5 });
+			image.addEventListener('click', function () {
+				const rotationAngle = Math.floor(Math.random() * 360) + 1;
+				image.style.transform = `rotate(${rotationAngle}deg)`;
 			});
 		});
-	});
-</script>
-<script defer>
-	document.addEventListener("DOMContentLoaded", function () {
-		const mainElement = document.querySelector('.main-wrapper');
-		mainElement.style.overflow = 'hidden';
-	});
-</script>
+	</script>
+	<script>
+		function redierect() {
+			setTimeout(
+				() => {
+					window.location.href = 'http://localhost:8000/admin'
+				}
+				, 5900)
+		}
+	</script>
+	<script defer>
+		document.addEventListener("DOMContentLoaded", function () {
+			const titleElement = document.querySelector('.title');
+			const cardElements = document.querySelectorAll('.card');
+			const tl = gsap.timeline({ defaults: { ease: "power1.out" } });
+			tl.fromTo(titleElement, { opacity: 0, y: "-100%" }, { opacity: 1, y: "0%", duration: 1 });
+			tl.from(cardElements, { opacity: 0, y: "50px", stagger: 0.1, duration: 1.5 });
+
+			cardElements.forEach((card) => {
+				card.addEventListener('mouseenter', function () {
+					gsap.to(card, { scale: 1.10, duration: 0.3 });
+				});
+
+				card.addEventListener('mouseleave', function () {
+					gsap.to(card, { scale: 1, duration: 0.3 });
+				});
+			});
+
+			const addButton = document.querySelector('.button-86');
+			gsap.from(addButton, { opacity: 0, duration: 1, delay: 1.5 });
+			const images = document.querySelectorAll('.card img');
+			images.forEach(function (image) {
+				image.addEventListener('mouseenter', function () {
+					gsap.to(image, { scale: 1.1, opacity: 0.8, duration: 0.5 });
+				});
+
+				image.addEventListener('mouseleave', function () {
+					gsap.to(image, { scale: 1, opacity: 1, duration: 0.5 });
+				});
+			});
+		});
+	</script>
+	<script defer>
+		document.addEventListener("DOMContentLoaded", function () {
+			const mainElement = document.querySelector('.main-wrapper');
+			mainElement.style.overflow = 'hidden';
+		});
+	</script>
+
+
+	<script defer>
+		document.addEventListener("DOMContentLoaded", function () {
+			const adsBannerElement = document.querySelector('.ads');
+			const adbanElement = document.querySelector('.adban');
+
+			const tlAdsBanner = gsap.timeline({ defaults: { ease: "power1.out" } });
+
+			tlAdsBanner.from(adsBannerElement, { opacity: 0, duration: 1 });
+			tlAdsBanner.from(adbanElement, { opacity: 0, y: "500px", duration: 1 }, "-=0.5");
+		});
+	</script>
+	
